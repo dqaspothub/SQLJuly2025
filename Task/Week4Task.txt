@@ -1,0 +1,72 @@
+
+1. Create Table
+
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(50),
+    department VARCHAR(50),
+    salary DECIMAL(10,2),
+    joining_date DATE
+);
+
+INSERT INTO employees (emp_id, emp_name, department, salary, joining_date) VALUES
+(1, 'Alice', 'HR', 45000, '2021-01-15'),
+(2, 'Bob', 'IT', 55000, '2020-06-20'),
+(3, 'Charlie', 'Finance', 60000, '2021-03-12'),
+(4, 'David', 'IT', 75000, '2019-11-01'),
+(5, 'Eva', 'Finance', 50000, '2021-08-05'),
+(6, 'Frank', 'HR', 40000, '2022-02-10'),
+(7, 'Grace', 'IT', 80000, '2018-12-25');
+
+
+CASE Statement Tasks
+
+Task 1 — Categorize Salary Levels
+
+Question: Show each employee’s name, department, salary, and categorize salary as:
+
+'Low' if salary < 50000
+
+'Medium' if salary between 50000 and 70000
+
+'High' if salary > 70000
+
+
+Task 2 — Employees Earning Above Average Salary
+
+Question: List employees whose salary is above the company’s average salary.
+
+
+Task 3 — Highest Salary in Each Department
+
+Question: Show employee name, department, and salary for those who earn the highest salary in their department.
+
+
+Task 4 — IT Employees Earning More Than Finance Average
+
+Question: Find IT department employees whose salary is greater than the average salary of Finance department.
+
+Task 5 — Combine CASE & Subquery
+
+Question: For employees who earn above the average salary, label them as 'Above Avg', otherwise 'Below Avg'.
+
+Task 6 — Bonus Calculation Based on Performance
+
+Question: Assume performance bonus rules:
+
+If salary is in top 25% of employees → Bonus = 20% of salary
+
+If salary is between average salary and top 25% → Bonus = 10% of salary
+
+Otherwise → Bonus = 5% of salary
+
+
+Task 8 — Department Ranking Based on Average Salary
+
+Question: Display each department and rank it as:
+
+'Top Paying' if department's average salary is highest
+
+'Low Paying' if department's average salary is lowest
+
+'Mid Paying' otherwise
