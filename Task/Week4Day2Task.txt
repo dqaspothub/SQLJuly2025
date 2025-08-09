@@ -1,0 +1,174 @@
+Task 1: Library Book Management System
+Problem Description:
+
+Design a database for a library to manage books and their authors. Use SQL JOINs to retrieve information about books and their authors, including cases where books may not have authors or authors may not have written books.
+Requirements:
+
+Create two tables:
+
+Authors: Stores author information with columns author_id (primary key), author_name.
+Books: Stores book information with columns book_id (primary key), title, author_id (foreign key referencing Authors), price.
+
+
+Insert sample data, including:
+
+Some books without an author (NULL author_id).
+Some authors without books.
+
+-- Creating Authors table
+CREATE TABLE Authors (
+    author_id INT PRIMARY KEY,
+    author_name VARCHAR(50) NOT NULL
+);
+
+-- Creating Books table
+CREATE TABLE Books (
+    book_id INT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    author_id INT,
+    price DECIMAL(10, 2),
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id)
+);
+
+-- Inserting sample data into Authors
+INSERT INTO Authors (author_id, author_name) VALUES
+(1, 'J.K. Rowling'),
+(2, 'George Orwell'),
+(3, 'Jane Austen'),
+(4, 'Mark Twain');
+
+-- Inserting sample data into Books
+INSERT INTO Books (book_id, title, author_id, price) VALUES
+(1, 'Harry Potter', 1, 29.99),
+(2, '1984', 2, 15.99),
+(3, 'Pride and Prejudice', 3, 12.99),
+(4, 'Mystery Novel', NULL, 19.99),
+(5, 'Lost Manuscript', NULL, 9.99);
+
+Write SQL queries to:
+
+Retrieve all books with their author names using an INNER JOIN.
+Retrieve all books, including those without authors, using a LEFT JOIN.
+Retrieve all authors, including those without books, using a RIGHT JOIN.
+
+Task 2: Online Store Order System
+
+Problem Description:
+
+Design a database for an online store to manage customers and their orders. Use SQL JOINs to retrieve order details along with customer information.
+Requirements:
+
+Create two tables:
+
+Customers: Stores customer information with columns customer_id (primary key), customer_name, email.
+Orders: Stores order information with columns order_id (primary key), customer_id (foreign key referencing Customers), order_date, amount.
+
+
+Insert sample data, including:
+
+Some customers with no orders.
+Some orders without a customer (NULL customer_id).
+
+-- Creating Customers table
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+
+-- Creating Orders table
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE,
+    amount DECIMAL(10, 2),
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+);
+
+-- Inserting sample data into Customers
+INSERT INTO Customers (customer_id, customer_name, email) VALUES
+(1, 'Alice Smith', 'alice@example.com'),
+(2, 'Bob Jones', 'bob@example.com'),
+(3, 'Charlie Brown', 'charlie@example.com');
+
+-- Inserting sample data into Orders
+INSERT INTO Orders (order_id, customer_id, order_date, amount) VALUES
+(1, 1, '2025-01-15', 99.99),
+(2, 2, '2025-02-10', 149.99),
+(3, NULL, '2025-03-05', 49.99),
+(4, 1, '2025-04-20', 199.99);
+
+Write SQL queries to:
+
+Retrieve all orders with their customer details using an INNER JOIN.
+Retrieve all customers, including those without orders, using a LEFT JOIN.
+Retrieve all orders, including those without customers, using a RIGHT JOIN.
+
+Task 3: School Course Enrollment System
+
+Problem Description:
+
+Design a database for a school to manage students and their course enrollments. Use SQL JOINs to retrieve enrollment details along with student and course information.
+Requirements:
+
+Create three tables:
+
+Students: Stores student information with columns student_id (primary key), student_name.
+Courses: Stores course information with columns course_id (primary key), course_name.
+Enrollments: Stores enrollment information with columns enrollment_id (primary key), student_id (foreign key), course_id (foreign key), enrollment_date.
+
+
+Insert sample data, including:
+
+Some students not enrolled in any courses.
+Some courses with no enrolled students.
+Some enrollments linking students to courses.
+
+-- Creating Students table
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(50) NOT NULL
+);
+
+-- Creating Courses table
+CREATE TABLE Courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(50) NOT NULL
+);
+
+-- Creating Enrollments table
+CREATE TABLE Enrollments (
+    enrollment_id INT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    enrollment_date DATE,
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+);
+
+-- Inserting sample data into Students
+INSERT INTO Students (student_id, student_name) VALUES
+(1, 'Emma Watson'),
+(2, 'Liam Davis'),
+(3, 'Sophia Lee');
+
+-- Inserting sample data into Courses
+INSERT INTO Courses (course_id, course_name) VALUES
+(1, 'Mathematics'),
+(2, 'Physics'),
+(3, 'History'),
+(4, 'Art');
+
+-- Inserting sample data into Enrollments
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, enrollment_date) VALUES
+(1, 1, 1, '2025-01-10'),
+(2, 1, 2, '2025-01-12'),
+(3, 2, 1, '2025-01-15'),
+(4, NULL, 3, '2025-02-01');
+
+Write SQL queries to:
+
+Retrieve all enrollments with student and course details using an INNER JOIN.
+Retrieve all students, including those not enrolled, using a LEFT JOIN.
+Retrieve all courses, including those with no students, using a RIGHT JOIN.
+
