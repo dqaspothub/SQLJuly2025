@@ -1,0 +1,29 @@
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_name VARCHAR(50),
+    product_name VARCHAR(50),
+    quantity INT,
+    price DECIMAL(10,2),
+    order_date DATE
+);
+
+INSERT INTO orders (order_id, customer_name, product_name, quantity, price, order_date) VALUES
+(101, 'John', 'Laptop', 1, 60000, '2023-01-10'),
+(102, 'Mary', 'Phone', 2, 30000, '2023-01-12'),
+(103, 'Steve', 'Tablet', 1, 25000, '2023-02-01'),
+(104, 'Lucy', 'Phone', 1, 15000, '2023-02-15'),
+(105, 'David', 'Laptop', 3, 180000, '2023-03-01'),
+(106, 'Emma', 'Headphones', 2, 8000, '2023-03-10'),
+(107, 'Sophia', 'Phone', 1, 28000, '2023-03-12');
+
+1.Write a SP to get all the orders
+2.Fetch all orders placed by a customer using Input Parameter
+3.Return total sales amount using Output Parameter
+4.Using IF logic  Check if an order is “High Value” (> 50,000) or “Normal”.
+5.Categorize orders based on quantity.
+
+quantity = 1 THEN 'Single Item'
+quantity BETWEEN 2 AND 3 THEN 'Small Bulk'
+Above 3 quantity'Large Bulk'
+
+6.Apply 10% discount for all Phone orders.
